@@ -1,17 +1,34 @@
 package co.edu.cue.velocerentals.model;
 
 public class Vehicle {
-
+    private int id;
+    private String name;
     private String category;
     private double price;
-    private Availability availability;
+    private String availability;
     private String type;
+    public String getAvailability() {
+        return availability;
+    }
 
-    public Vehicle(String category, double price, Availability availability, String type) {
-        this.category = category;
-        this.price = price;
+    public void setAvailability(String availability) {
         this.availability = availability;
-        this.type = type;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getCategory() {
@@ -28,14 +45,6 @@ public class Vehicle {
 
     public void setPrice(double price) {
         this.price = price;
-    }
-
-    public Availability getAvailability() {
-        return availability;
-    }
-
-    public void setAvailability(Availability availability) {
-        this.availability = availability;
     }
 
     public String getType() {

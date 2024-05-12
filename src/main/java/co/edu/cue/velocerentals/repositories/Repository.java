@@ -7,5 +7,5 @@ public interface Repository<T> {
     List<T> toList() throws SQLException;
     T byId(Long id) throws SQLException;
     void save(T t) throws SQLException;
-    void delete(Long id) throws SQLException;
+    void delete(int id) throws SQLException;
 }

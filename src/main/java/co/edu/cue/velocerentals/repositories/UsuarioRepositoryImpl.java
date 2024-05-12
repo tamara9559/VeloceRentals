@@ -20,8 +20,8 @@ public class UsuarioRepositoryImpl implements UserRepository {
         try (Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery("select * from usuarios")) {
             while (rs.next()) {
-                User p = getUser(rs);
-                users.add(p);
+                User u = getUser(rs);
+                users.add(u);
             }
         }
         return users;
@@ -63,7 +63,7 @@ public class UsuarioRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public void delete(Long id) throws SQLException {
+    public void delete(int id) throws SQLException {
         String sql = "delete from usuarios where id=?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setLong(1, id);

@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class User {
     private Long id;
     private String name;
-    private int age;
     private String email;
     private String password;
 
@@ -35,13 +34,6 @@ public class User {
         this.name = name;
     }
 
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
 
     public String getEmail() {
         return email;

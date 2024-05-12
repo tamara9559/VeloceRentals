@@ -3,17 +3,18 @@ package co.edu.cue.velocerentals.filters;
 import co.edu.cue.velocerentals.services.ServiceJdbcException;
 import co.edu.cue.velocerentals.utils.ConexionBaseDatos;
 import jakarta.servlet.*;
-import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-@WebServlet("/*")
+@WebFilter("/*")
 public class ConexionFilter implements Filter {
     @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException,
+            ServletException {
 
         try (Connection conn = ConexionBaseDatos.getConnection()) {
 
@@ -35,3 +36,4 @@ public class ConexionFilter implements Filter {
         }
     }
 }
+
