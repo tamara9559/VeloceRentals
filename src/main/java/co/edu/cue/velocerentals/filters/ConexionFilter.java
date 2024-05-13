@@ -1,11 +1,12 @@
 package co.edu.cue.velocerentals.filters;
 
 import co.edu.cue.velocerentals.services.ServiceJdbcException;
-import co.edu.cue.velocerentals.utils.ConexionBaseDatos;
+import co.edu.cue.velocerentals.utils.DataBaseConexion;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletResponse;
 
+import javax.naming.NamingException;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -16,7 +17,7 @@ public class ConexionFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException,
             ServletException {
 
-        try (Connection conn = ConexionBaseDatos.getConnection()) {
+        try (Connection conn = DataBaseConexion.getConnection()) {
 
             if (conn.getAutoCommit()) {
                 conn.setAutoCommit(false);
@@ -31,7 +32,7 @@ public class ConexionFilter implements Filter {
                 ((HttpServletResponse)response).sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage());
                 e.printStackTrace();
             }
-        } catch (SQLException throwables) {
+        } catch (SQLException | NamingException throwables) {
             throwables.printStackTrace();
         }
     }
