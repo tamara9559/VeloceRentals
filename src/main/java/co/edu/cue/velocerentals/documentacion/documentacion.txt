@@ -1,0 +1,20 @@
+APIs utilizadas en este proyecto fueron:
+-API de coleccion de java
+-API steam
+-API servlet
+-API jsp
+-API jdbc
+-JAVA EE API
+-CDI
+descripcion de los servicios:
+-vehicleService: Este servicio proporciona una interfaz para realizar operaciones CRUD (Crear, Leer, Actualizar,
+Eliminar) en entidades de vehículos en la aplicación. Proporciona métodos para recuperar vehículos, buscar por ID,
+guardar vehículos nuevos y eliminar vehículos existentes. Esto facilita la gestión de vehículos en la aplicación y
+permite realizar operaciones básicas de mantenimiento de datos.
+-ServiceJdbcException:
+Se utiliza para representar excepciones relacionadas con capas de servicios que utilizan JDBC (Java Database
+Connectivity). Puede ocurrir cuando ocurre algún error durante la interacción con la base de datos, como problemas de
+conexión, consultas SQL incorrectas, errores de sintaxis SQL, etc.
+-LoginService:
+define un método para obtener el nombre de usuario del usuario autenticado en una solicitud HTTP en una aplicación web.
+

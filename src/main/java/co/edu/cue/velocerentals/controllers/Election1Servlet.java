@@ -16,7 +16,7 @@ import java.io.PrintWriter;
 import java.util.List;
 import java.util.Optional;
 
-@WebServlet("/category/election1")
+@WebServlet({"/election1","/election1.html"})
 public class Election1Servlet extends HttpServlet {
 
     @Override
@@ -70,7 +70,7 @@ public class Election1Servlet extends HttpServlet {
                 out.println("</table>");
 
             }else{
-
+                resp.sendError(HttpServletResponse.SC_NOT_FOUND, "Lo sentimos no hay carros registrados!");
             }
             out.println("    </body>");
             out.println("</html>");
