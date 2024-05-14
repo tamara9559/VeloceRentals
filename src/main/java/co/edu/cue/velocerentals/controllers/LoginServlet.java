@@ -2,6 +2,7 @@ package co.edu.cue.velocerentals.controllers;
 
 import co.edu.cue.velocerentals.services.LoginService;
 import co.edu.cue.velocerentals.services.impl.LoginServiceSessionImpl;
+import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -29,17 +30,12 @@ public class LoginServlet extends HttpServlet {
      */
     private static final String PASSWORD = "12345";
 
-    /**
-     * Handles HTTP GET requests.
-     *
-     * @param req  the HTTP request
-     * @param resp the HTTP response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException       if an I/O error occurs
-     */
+
+    @Inject
+    private LoginService auth;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        LoginService auth = new LoginServiceSessionImpl();
+       //LoginService auth = new LoginServiceSessionImpl();
         Optional<String> usernameOptional = auth.getUsername(req);
 
         String mensageApp = (String) getServletContext().getAttribute("mensaje");

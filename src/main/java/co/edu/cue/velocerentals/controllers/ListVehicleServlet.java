@@ -6,6 +6,7 @@ import co.edu.cue.velocerentals.services.VehicleService;
 import co.edu.cue.velocerentals.services.impl.LoginServiceSessionImpl;
 import co.edu.cue.velocerentals.services.impl.VehicleServiceImpl;
 import co.edu.cue.velocerentals.services.impl.VehicleServiceJdbcImpl;
+import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -20,6 +21,12 @@ import java.util.Optional;
 /**
  * Servlet implementation class ListVehicleServlet
  */
+
+
+
+
+
+
 @WebServlet("/category/list")
 public class ListVehicleServlet extends HttpServlet {
 
@@ -30,16 +37,14 @@ public class ListVehicleServlet extends HttpServlet {
         super();
     }
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+    @Inject
+    private VehicleService service;
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Get the VehicleService instance
-        VehicleService service = new VehicleServiceImpl();
-        // Get the list of vehicles from the service
+
+        //VehicleService service = new VehicleServiceImpl(); este codigo se ahorra por la inyeccion de dependencia
         List<Vehicle> vehicles = service.toList();
 
         // Get the LoginService instance
