@@ -5,6 +5,7 @@ import co.edu.cue.velocerentals.services.LoginService;
 import co.edu.cue.velocerentals.services.VehicleService;
 import co.edu.cue.velocerentals.services.impl.LoginServiceSessionImpl;
 import co.edu.cue.velocerentals.services.impl.VehicleServiceImpl;
+import co.edu.cue.velocerentals.services.impl.VehicleServiceJdbcImpl;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -13,24 +14,22 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
 import java.util.List;
 import java.util.Optional;
 
-@WebServlet("/category")
+@WebServlet("/category/list")
 public class LIstVehicleServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        Connection conn = (Connection) req.getAttribute("conn");
-        VehicleService service = new VehicleServiceImpl(conn);
+
+        VehicleService service = new VehicleServiceImpl();
         List<Vehicle> vehicles = service.toList();
 
         LoginService auth = new LoginServiceSessionImpl();
         Optional<String> usernameOptional = auth.getUsername(req);
 
-        String mensajeRequest = (String) req.getAttribute("mensaje");
-        String mensajeApp = (String) getServletContext().getAttribute("mensaje");
+
         resp.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = resp.getWriter()) {
 
@@ -67,8 +66,7 @@ public class LIstVehicleServlet extends HttpServlet {
                 out.println("</tr>");
             });
             out.println("</table>");
-            out.println("<p>" + mensajeApp + "</p>");
-            out.println("<p>" + mensajeRequest + "</p>");
+
             out.println("    </body>");
             out.println("</html>");
         }

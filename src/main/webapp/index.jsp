@@ -14,9 +14,9 @@
 <body>
 <h3>Veloce rentals</h3>
 <ul>
-    <li><a href="http://localhost:8080/VeloceRentals_war_exploded/category">que cehiculo quiere escoger?</a></li>
-    <li><a href="http://localhost:8080/VeloceRentals_war_exploded/login">login</a></li>
-    <li><a href="http://localhost:8080/VeloceRentals_war_exploded/logout">logout</a></li>
+    <li><a href="${pageContext.request.contextPath}/election">que vehiculo quiere escoger?</a></li>
+    <li><a href="${pageContext.request.contextPath}/login">login</a></li>
+    <li><a href="${pageContext.request.contextPath}/logout">logout</a></li>
 
 </ul>
 

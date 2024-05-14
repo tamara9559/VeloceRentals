@@ -7,6 +7,21 @@ public class Vehicle {
     private double price;
     private String availability;
     private String type;
+
+    public Vehicle() {
+    }
+
+    public Vehicle(int id, String name, double price,String category, String availability, String type) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.category = category;
+        this.availability = availability;
+        this.type = type;
+    }
+
+
+
     public String getAvailability() {
         return availability;
     }

@@ -14,10 +14,10 @@
 </head>
 <body>
 <h1>Iniciar sesión</h1>
-<form action="http://localhost:8080/VeloceRentals_war_exploded/login" method="post">
+<form action="${pageContext.request.contextPath}/login" method="post">
 
     <div>
-        <p><a href="http://localhost:8080/VeloceRentals_war_exploded/index.html">volver</a></p>
+        <p><a href="${pageContext.request.contextPath}/index.html">volver</a></p>
     </div>
     <div>
         <label for="username">Username</label>

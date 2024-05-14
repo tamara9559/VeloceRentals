@@ -18,11 +18,15 @@ public class LoginServlet extends HttpServlet {
     final static String USERNAME = "admin";
     final static String PASSWORD = "12345";
 
+
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         LoginService auth = new LoginServiceSessionImpl();
         Optional<String> usernameOptional = auth.getUsername(req);
 
+
+        String mensageApp = (String) getServletContext().getAttribute("mensaje");
             if (usernameOptional.isPresent()) {
                 resp.setContentType("text/html;charset=UTF-8");
                 try (PrintWriter out = resp.getWriter()) {
@@ -37,6 +41,7 @@ public class LoginServlet extends HttpServlet {
                     out.println("        <h1>Hola " + usernameOptional.get() + " has iniciado sesión con éxito!</h1>");
                     out.println("<p><a href='" + req.getContextPath() + "/index.html'>volver</a></p>");
                     out.println("<p><a href='" + req.getContextPath() + "/logout'>cerrar sesión</a></p>");
+                    out.println("<p>" + mensageApp + "</p>");
                     out.println("    </body>");
                     out.println("</html>");
                 }

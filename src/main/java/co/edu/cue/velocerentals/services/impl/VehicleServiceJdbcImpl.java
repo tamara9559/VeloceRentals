@@ -11,11 +11,11 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
-public class VehicleServiceImpl implements VehicleService {
+public class VehicleServiceJdbcImpl implements VehicleService {
 
     private Repository<Vehicle> repositoryJdbc;
 
-    public VehicleServiceImpl(Connection connection) {
+    public VehicleServiceJdbcImpl(Connection connection) {
         this.repositoryJdbc = new VehicleRepositoryJdbcImpl(connection);
     }
 

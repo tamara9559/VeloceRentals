@@ -1,4 +1,4 @@
-package co.edu.cue.velocerentals.filters;
+/*package co.edu.cue.velocerentals.filters;
 
 
 import co.edu.cue.velocerentals.annotation.MysqlConn;
@@ -48,4 +48,4 @@ public class ConexionFilter implements Filter {
 
     }
 }
-
+*/
