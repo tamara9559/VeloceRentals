@@ -1,22 +1,31 @@
 package co.edu.cue.velocerentals.utils;
 
-
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
+import org.apache.commons.dbcp2.BasicDataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 
 public class DataBaseConexion {
+    private static String url = "jdbc:mysql://localhost:3306/velocerentals";
+    private static String user = "root";
+    private static String password =" ";
+    private static BasicDataSource pool;
+    public static BasicDataSource getInstance() throws SQLException {
+        if (pool == null) {
+            pool = new BasicDataSource();
+            pool.setUrl(url);
+            pool.setUsername(user);
+            pool.setPassword(password);
+            pool.setInitialSize(3);
+            pool.setMinIdle(3);
+            pool.setMaxIdle(8);
+            pool.setMaxTotal(8);
+        }
+        return pool;
+    }
 
-    public static Connection getConnection() throws SQLException, NamingException{
-        Context initContext = null;
-        initContext = new InitialContext();
-        Context envContext  = (Context)initContext.lookup("java:/comp/env");
-        DataSource ds = (DataSource)envContext.lookup("jdbc/vsDB");
-        return ds.getConnection();
-
+    public static Connection getConnection() throws SQLException {
+        return getInstance().getConnection();
     }
 }
+
 

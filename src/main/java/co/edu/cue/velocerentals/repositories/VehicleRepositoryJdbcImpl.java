@@ -80,7 +80,7 @@ public class VehicleRepositoryJdbcImpl implements Repository<Vehicle> {
         v.setId(rs.getInt("id"));
         v.setName(rs.getString("nombre"));
         v.setPrice(rs.getDouble("precio"));
-        v.setCategory(rs.getString("sku"));
+        v.setCategory(rs.getString("categoria"));
         v.setAvailability(rs.getString("disponibilidad"));
         v.setType(rs.getString("tipo"));
 

@@ -6,11 +6,11 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UsuarioRepositoryImpl implements UserRepository {
+public class UserRepositoryImpl implements UserRepository {
 
     private Connection conn;
 
-    public UsuarioRepositoryImpl(Connection conn) {
+    public UserRepositoryImpl(Connection conn) {
         this.conn = conn;
     }
 
